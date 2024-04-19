@@ -1,0 +1,22 @@
+2023-11-24
+
+정적 자원: 한 번에 모든 동작을 처리(가끔 변경됨) html, CSS, JavaScript, 이미지 >> 웹서버(WEB)
+
+동적 자원: 클라이언트가 요청할 때 특정 데이터를 가공해서 전달 DataBase >> 웹 애플리케이션 서버(WAS)
+
+* 로그인 처리 로직
+	
+	1) 로그인 성공
+		user가 ID, PASSWORD 입력
+		|
+		ID, PASSWORD를 기존의 회원 정보와 비교
+		|
+		ID, PASSWORD가 동일하면 메인 페이지 이동(로그인 성공)
+	
+	2) 로그인 실패
+		user가 ID, PASSWORD 입력
+		|
+		ID, PASSWORD를 기존의 회원 정보와 비교
+		|
+		ID 틀림 > 비회원
+		ID 맞음, PASSWORD 틀림 > 회원, PASSWORD 오류

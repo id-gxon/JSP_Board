@@ -1,0 +1,65 @@
+EL(Expression Language) 표현 언어(EL 표현식)
+	JSP 코드 <%= %>(표현식): Java 코드를 화면에 출력
+	
+	<%= %> -> ${ } 변경
+	
+	${변수} / ${연산식} / ${객체.변수}
+	
+	* EL 내장객체
+		- pageScope
+		- requestScope
+		- sessionScope
+		- applicationScope
+			=> JSP 영역 객체들과 정보 공유 가능
+		
+		- param / paramValues
+			=> 파라메터 데이터를 저장 / 사용
+		
+		- header / headerValues
+		- cookie
+		- initParam
+		- pageContext(프로젝트 정보)
+	
+	* EL 연산자
+		.	: 객체 참조 연산자
+		[]	: 배열 접근 연산자
+		()	: 연산 우선순위 증가
+		x? a:b	: 삼항 연산자
+		empty	: 객체의 정보가 있는지 없는지 체크(없을 때 true)
+		
+		산술연산자	: + - * / %
+		논리연산자	: &&(and) ||(or) !(not)
+		비교연산자	: ==(eq) !=(ne) <(lt) >(gt) <=(le) >=(ge)
+	
+	* 서블릿: 서버에서 사용가능한 자바 파일
+	
+		HTML / JavaScript	(front-end)	-> 인터프리터
+		JSP / Servlet		(back-end)	-> 컴파일러
+	
+		JSP 파일 -> 실행 -> JAVA 파일(서블릿) -> Class 파일
+		
+		- JSP -> Servlet 변환 규칙
+			- JSP 스크립틀릿( <% %> ) -> Servlet service() 안에 코드 작성
+			
+			- JSP 표현식( <%= %> ) -> Servlet service() 안에 out.println() 변경
+			
+			- JSP 선언문( <%! %> ) -> Servlet 멤버 변수로 변환
+			
+			- HTML -> Servlet service() 안에 out.write() 변경
+	
+		- 서블릿 생성 규칙
+			1) javax.servlet.Servlet 인터페이스를 구현
+			
+			2) 일반적으로는 1번 동작 대신 javax.servlet.http.HttpServlet 클래스 상속
+			
+			3) doGet() / doPost() 생성 - Method Overriding,
+				파라메터로 javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse를 사용
+				
+			4) java.io.IOException / javax.servlet.ServletException를 사용한 예외 처리
+			
+			5) web.xml(배포 서술자)에 서블릿과 특정 URL을 매핑
+				-> Servlet 3.0 이상의 경우 선택사항(어노테이션)
+
+JSTL: 자주 사용되는 기능들을 모아놓은 커스텀 태그
+	JSTL - core: 기본적인 기능(변수 선언, 조건문, 반복문, 출력문 etc)
+	JSTL - fommatting: 형식화 기능(숫자, 날짜)
